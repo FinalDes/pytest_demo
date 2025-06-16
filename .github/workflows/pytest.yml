@@ -23,4 +23,4 @@ jobs:
         run: uv sync --locked --all-extras --dev
       - name: Run tests
         # For example, using `pytest`
-        run: uv run pytest test_main.py
+        run: uv run pytest --cov test_main.py
