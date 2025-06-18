@@ -19,6 +19,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version-file: ".python-version" 
+      - name: check lock file is updated
+        run: uv lock --check
       - name: Install the project
         run: uv sync --locked --all-extras --dev
       - name: Run tests
