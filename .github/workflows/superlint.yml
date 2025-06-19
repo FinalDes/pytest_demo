@@ -7,7 +7,10 @@ on: # yamllint disable-line rule:truthy
       - "main"
   pull_request: null
 
-permissions: {}
+permissions: 
+  contents: read
+  packages: read
+  statuses: write
 
 jobs:
   build:
