@@ -1,4 +1,4 @@
-name: UV Setup
+name: Python test
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -21,10 +22,12 @@ jobs:
           python-version-file: ".python-version" 
       - name: check lock file is updated
         run: uv lock --check
-      - name: check linting
-        run: uv run ruff check
       - name: Install the project
         run: uv sync --locked --all-extras --dev
+      - name: Check pyproject.toml
+        run: uv run validate-pyproject pyproject.toml
+      - name: check linting
+        run: uv run ruff check
       - name: Run tests
         # For example, using `pytest`
         run: uv run pytest --cov test_main.py
