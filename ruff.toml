@@ -1,0 +1,35 @@
+# Which rules to enable (best practice set)
+
+
+# Enable autofix for fixable issues
+fix = true
+
+# [Optional] Set the maximum line length (if you enable E501)
+# line-length = 88
+
+# [Optional] Exclude some directories from linting
+exclude = [
+  ".git",
+  "__pycache__",
+  "venv",
+  ".venv",
+  "env",
+  ".env",
+  "build",
+  "dist",
+]
+[lint]
+select = [
+  "E",   # pycodestyle errors
+  "F",   # pyflakes
+  "B",   # flake8-bugbear
+  "I",   # isort (import sorting)
+  "C4",  # flake8-comprehensions
+  "UP",  # pyupgrade (modernizes code)
+  "SIM", # flake8-simplify
+  "TID", # tidy imports
+  "PL",  # pylint
+]
+
+# Ignore these rules (let Black handle line length, for example)
+ignore = ["E501"]
